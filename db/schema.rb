@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_140609) do
   create_table "solicitations", force: :cascade do |t|
     t.integer "loan_amount"
     t.integer "number_of_installments"
-    t.float "installment_amount"
+    t.integer "installment_amount"
     t.boolean "pending", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
