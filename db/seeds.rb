@@ -6,4 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+solicitation = Solicitation.new(loan_amount: 100000,
+                                number_of_installments: 12,
+                                user: User.last)
 
+solicitation.save!
