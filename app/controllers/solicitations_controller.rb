@@ -11,9 +11,10 @@ class SolicitationsController < ApplicationController
 
   def create
     @solicitation = Solicitation.new(solicitation_params)
+    @solicitation.user = current_user
     @solicitation.installment_amount = pmt_function(@solicitation.loan_amount, @solicitation.number_of_installments)
     if @solicitation.save
-      redirect_to solicitations_path(@solicitation), notice: 'Your solicitation was successfully created'
+      redirect_to solicitation_path(@solicitation), notice: 'Your solicitation was successfully created'
     else
       render :new
     end
@@ -21,7 +22,7 @@ class SolicitationsController < ApplicationController
 
   private
 
-  def album_params
+  def solicitation_params
     params.require(:solicitation).permit(:loan_amount, :number_of_installments)
   end
 
@@ -31,5 +32,6 @@ class SolicitationsController < ApplicationController
     one = BigDecimal(1)
     @installment_amount = BigDecimal(loan_amount) * ((((one + rate) ** n_installments) * rate) / (((one + rate) ** n_installments) - one))
     @installment_amount.truncate(2).round
+    raise
   end
 end

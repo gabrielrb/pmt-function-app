@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="d-flex justify-content-start">
+    <h1 class="mt-4">New Solicitation</h1>
+  </div>
+  <%= simple_form_for(@solicitation) do |f| %>
+    <%= f.input :loan_amount, label: "Desired Amount in BRL (R$)", input_html: { min: '0', step: 'any' } %>
+    <%= f.input :number_of_installments, label: "Number of Installments:", collection: (1..18).to_a, input_html: { min: '0', max: '18', step: 'any' } %>
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <%= link_to "Back to home", root_path, class: "btn btn-secondary" %>
+  <% end %>
+
+</div>
