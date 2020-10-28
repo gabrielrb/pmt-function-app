@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_140609) do
   enable_extension "plpgsql"
 
   create_table "solicitations", force: :cascade do |t|
-    t.float "loan_amount"
+    t.integer "loan_amount"
     t.integer "number_of_installments"
     t.float "installment_amount"
     t.boolean "pending", default: true
