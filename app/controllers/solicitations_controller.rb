@@ -32,6 +32,5 @@ class SolicitationsController < ApplicationController
     one = BigDecimal(1)
     @installment_amount = BigDecimal(loan_amount) * ((((one + rate) ** n_installments) * rate) / (((one + rate) ** n_installments) - one))
     @installment_amount.truncate(2).round
-    raise
   end
 end
