@@ -9,8 +9,8 @@
           <li><strong>Number of installments:</strong> <%= @solicitation.number_of_installments %></li>
         </ul>
         <ol>
-          <% @solicitation.number_of_installments.times do %>
-            <li><strong><%= @solicitation.created_at %></strong> R$ <%= @solicitation.installment_amount %>,00</li>
+          <% @dates.each do |date| %>
+            <li><strong><%= date %></strong> R$ <%= @solicitation.installment_amount %>,00</li>
           <% end %>
         </ol>
       </div>
