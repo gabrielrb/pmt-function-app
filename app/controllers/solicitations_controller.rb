@@ -2,6 +2,10 @@ class SolicitationsController < ApplicationController
   require "bigdecimal"
   HUMAN_READABLE_DATE_FORMAT = "%e-%b-%Y"
 
+  def index
+    @solicitations = current_user.solicitations
+  end
+
   def show
     @solicitation = Solicitation.find(params[:id])
     @dates = bill_payment_date(@solicitation.created_at, @solicitation.number_of_installments)
