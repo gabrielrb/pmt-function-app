@@ -18,8 +18,10 @@ class User < ApplicationRecord
                                           message: 'Invalid format' }
   validates :secondary_phone_number, uniqueness: true,
                                      format: { with: /\A\(?\b([0-9]{2,3}|0((x|[0-9]){2,3}[0-9]{2}))\)?\s*[0-9]{4,5}[- ]*[0-9]{4}\b/,
-                                               message: 'Invalid format' }
+                                               message: 'Invalid format' },
+                                     allow_blank: true
   validates :main_address, presence: true,
                            uniqueness: true
-  validates :secondary_address, uniqueness: true
+  validates :secondary_address, uniqueness: true,
+                                allow_blank: true
 end
