@@ -1,5 +1,6 @@
 class SolicitationsController < ApplicationController
   require "bigdecimal"
+  HUMAN_READABLE_DATE_FORMAT = "%e-%b-%Y"
 
   def show
     @solicitation = Solicitation.find(params[:id])
@@ -39,7 +40,7 @@ class SolicitationsController < ApplicationController
     dates = []
     date_range = (1..number_of_installments).to_a
     date_range.each do |number|
-      dates << start_date + number.months
+      dates << (start_date + number.months).strftime(HUMAN_READABLE_DATE_FORMAT)
     end
     dates
   end
