@@ -1,0 +1,10 @@
+
+one:
+  email: "nexoos@gmail.com"
+  encrypted_password: 123123
+  name: "42 S/A"
+  cnpj: "23.265.773/0001-24"
+  main_phone_number: "(11) 99999 9999"
+  secondary_phone_number: "11999990000"
+  main_address: "Rua Cláudio Soares, 72 - Pinheiros, São Paulo - Brasil"
+  secondary_address: "1600 Amphitheatre Parkway, Mountain View, CA, Postal Code 94043"
