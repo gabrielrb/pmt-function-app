@@ -8,7 +8,7 @@
         <h5><strong>Number of installments:</strong> <%= @solicitation.number_of_installments %></h5>
         <ol class="my-4">
           <% @dates.each do |date| %>
-            <li class="border-bottom pt-1"><strong><%= date %></strong> R$ <%= @solicitation.installment_amount %>,00</li>
+            <li class="border-bottom pt-1"><strong><%= date %></strong> - R$ <%= @solicitation.installment_amount %>,00</li>
           <% end %>
         </ol>
         <br>
