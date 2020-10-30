@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h2 class="mt-5 border-bottom"><strong>All solicitations</strong></h2>
+  </div>
+  <br>
+  <div>
+    <%= link_to "New Solicitation", new_solicitation_path, class: "btn btn-secondary" %>
+  </div>
+  <br>
+  <div class="d-flex align-content-start flex-wrap">
+    <% if @solicitations.present? %>
+      <% @solicitations.each do |solicitation| %>
+        <div class="col-4 mb-3 border-left">
+          <p><strong>Company Name:</strong> <%= solicitation.user.name %></p>
+          <p><strong>CNPJ:</strong> <%= solicitation.user.cnpj %></p>
+          <p><strong>Loan Amount:</strong> <%= solicitation.loan_amount %></p>
+          <%= link_to "Details", solicitation_path(solicitation), class: "btn btn-warning" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
