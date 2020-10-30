@@ -1,0 +1,6 @@
+
+one:
+  loan_amount: 100000
+  number_of_installments: 12
+  installment_amount: 9168
+  user: one
