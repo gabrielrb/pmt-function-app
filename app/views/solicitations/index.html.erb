@@ -10,7 +10,7 @@
   <div class="d-flex align-content-start flex-wrap">
     <% if @solicitations.present? %>
       <% @solicitations.each do |solicitation| %>
-        <div class="col-4 mb-3 border-left">
+        <div class="col-4 mb-5 border-left">
           <p><strong>Company Name:</strong> <%= solicitation.user.name %></p>
           <p><strong>CNPJ:</strong> <%= solicitation.user.cnpj %></p>
           <p><strong>Loan Amount:</strong> <%= solicitation.loan_amount %></p>
