@@ -1,15 +1,35 @@
 <div class="d-flex justify-content-center">
   <div class="justify-content-center">
-    <h1 class="mt-5 border-bottom text-center">Solicitation's Details</h1>
-    <br>
-    <div class="d-flex justify-content-around flex-column mt-3 pb-3">
-      <h2 class="border-bottom"><strong>Loan amount:</strong> R$ <%= @solicitation.loan_amount %>,00</h2>
-      <div>
-        <ul>
-          <li><strong>Number of installments:</strong> <%= @solicitation.number_of_installments %></li>
-          <li><strong>Installment amount:</strong> R$ <%= @solicitation.installment_amount %>,00</li>
-        </ul>
+    <% if @solicitation.user == current_user %>
+      <h1 class="mt-5 border-bottom text-center">Solicitation's Details</h1>
+      <br>
+      <div class="d-flex justify-content-around flex-column mt-3 pb-3">
+        <h5><strong>Loan amount:</strong> R$ <%= @solicitation.loan_amount %>,00</h5>
+        <h5><strong>Number of installments:</strong> <%= @solicitation.number_of_installments %></h5>
+        <br>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Due Date</th>
+              <th scope="col">Installment Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @dates.each_with_index do |date, index| %>
+              <tr>
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= date %></td>
+                <td>R$ <%= @solicitation.installment_amount %>,00</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+        <%= link_to "All Solicitations", solicitations_path, class: "btn btn-warning" %>
       </div>
-    </div>
+    <% else %>
+      <h1 class="mt-5 border-bottom text-center">You don't have authorization to be here.</h1>
+    <% end %>
   </div>
 </div>

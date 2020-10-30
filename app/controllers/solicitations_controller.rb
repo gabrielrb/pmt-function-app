@@ -1,8 +1,14 @@
 class SolicitationsController < ApplicationController
   require "bigdecimal"
+  HUMAN_READABLE_DATE_FORMAT = "%e-%b-%Y"
+
+  def index
+    @solicitations = current_user.solicitations
+  end
 
   def show
     @solicitation = Solicitation.find(params[:id])
+    @dates = bill_payment_date(@solicitation.created_at, @solicitation.number_of_installments)
   end
 
   def new
@@ -32,5 +38,14 @@ class SolicitationsController < ApplicationController
     one = BigDecimal(1)
     @installment_amount = BigDecimal(loan_amount) * ((((one + rate) ** n_installments) * rate) / (((one + rate) ** n_installments) - one))
     @installment_amount.truncate(2).round
+  end
+
+  def bill_payment_date(start_date, number_of_installments)
+    dates = []
+    date_range = (1..number_of_installments).to_a
+    date_range.each do |number|
+      dates << (start_date + number.months).strftime(HUMAN_READABLE_DATE_FORMAT)
+    end
+    dates
   end
 end
